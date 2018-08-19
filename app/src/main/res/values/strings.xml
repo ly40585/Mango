@@ -2,4 +2,5 @@
     <string name="app_name">Mango</string>
     <string name="switch_title">On/Off</string>
     <string name="settings_title">Settings</string>
+    <string name="touch_height_title">Touch area height</string>
 </resources>

@@ -5,7 +5,14 @@
     <SwitchPreference
         android:key="switch"
         android:title="@string/switch_title" />
+
+
     <PreferenceCategory android:title="@string/settings_title">
+
+        <mango.com.example.ly.mango.view.SeekBarPreference
+            android:key="touch_height"
+            android:title="@string/touch_height_title" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

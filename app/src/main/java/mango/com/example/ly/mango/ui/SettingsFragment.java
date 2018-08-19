@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 
 import mango.com.example.ly.mango.R;
 import mango.com.example.ly.mango.Util;
+import mango.com.example.ly.mango.view.SeekBarPreference;
 
 /**
  * Created by ly on 2018/8/19.
@@ -16,8 +17,10 @@ import mango.com.example.ly.mango.Util;
 public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
 
     private static final String KEY_SWITCH = "switch";
-
+    private static final String KEY_TOUCH_HEIGHT = "touch_height";
     private SwitchPreference mSwitch;
+    private SeekBarPreference mTouchHeight;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         addPreferencesFromResource(R.xml.settings_fragment);
 
         mSwitch = (SwitchPreference) findPreference(KEY_SWITCH);
+        mTouchHeight = (SeekBarPreference) findPreference(KEY_TOUCH_HEIGHT);
+
         mSwitch.setOnPreferenceChangeListener(this);
     }
 
@@ -36,5 +41,4 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         }
         return true;
     }
-
 }
