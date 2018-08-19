@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -44,21 +45,30 @@ public class TouchView extends View {
         Point p = new Point();
         display.getRealSize(p);
         mLayoutParams.width = p.x;
-        mLayoutParams.height = 20;
+        mLayoutParams.height = 300;
         mLayoutParams.x = 0;
         mLayoutParams.y = p.y - mLayoutParams.height;
         mLayoutParams.format = PixelFormat.TRANSLUCENT;
         mLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
-        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
     }
 
-    public void show() {
-        mWindowManager.addView(this, mLayoutParams);
+    public void show(boolean enable) {
+        if (enable && getParent() == null) {
+            mWindowManager.addView(this, mLayoutParams);
+            return;
+        }
+
+        if (!enable && getParent() != null) {
+            mWindowManager.removeView(this);
+            return;
+        }
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(Color.parseColor("#ff0000"));
     }
+
 }

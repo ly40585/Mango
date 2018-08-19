@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mango</string>
+    <string name="switch_title">On/Off</string>
+    <string name="settings_title">Settings</string>
 </resources>

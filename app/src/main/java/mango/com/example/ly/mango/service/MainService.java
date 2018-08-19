@@ -28,6 +28,14 @@ public class MainService extends Service {
 
         mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         mTouchView = new TouchView(this);
-        mTouchView.show();
+        mTouchView.show(true);
+    }
+
+    @Override
+    public void onDestroy() {
+
+        mTouchView.show(false);
+
+        super.onDestroy();
     }
 }
